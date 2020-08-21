@@ -1,9 +1,6 @@
 ﻿using Avapi;
 using Avapi.AvapiTIME_SERIES_DAILY;
 using System;
-using Newtonsoft.Json;
-using System.Collections.Generic;
-using System.Text.Json;
 
 namespace PriceQuotationApp
 {
@@ -30,13 +27,9 @@ namespace PriceQuotationApp
                  Const_TIME_SERIES_DAILY.TIME_SERIES_DAILY_outputsize.compact);
             Console.WriteLine(time_series_dailyResponse);
 
-            //var x = JsonSerializer.Serialize(time_series_dailyResponse.Data.MetaData);
-            //var w = JsonConvert.DeserializeObject<Ativo>(time_series_dailyResponse.RawData);
-            //var y = JsonSerializer.Serialize(time_series_dailyResponse.Data.TimeSeries);
-            //List<TimeSeries> timeSeries = JsonSerializer.Deserialize<List<TimeSeries>>(y);
             var ativo = MapeamentoServico.MapearParaAtivo(time_series_dailyResponse.Data.MetaData);
             var cotacoes = MapeamentoServico.MapearParaCotacoes(time_series_dailyResponse.Data.TimeSeries);
-            //Ativo ativo = JsonSerializer.Deserialize<Ativo>(x);
+            
             ativo.Cotacoes = cotacoes;
 
             return ativo;

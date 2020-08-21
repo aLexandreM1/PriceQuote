@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "PriceQuotationApp": {
+      "commandName": "Project",
+      "commandLineArgs": "PETR4 22.21 23.31"
+    }
+  }
+}

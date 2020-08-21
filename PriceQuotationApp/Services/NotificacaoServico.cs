@@ -9,7 +9,7 @@ namespace PriceQuotationApp
 {
     class NotificacaoServico
     {
-        public static async Task NotificarPrecoAPIAsync(string mensagem)
+        private static async Task EnviarEmailAPIAsync()
         {
             var config = System.Configuration.ConfigurationManager.AppSettings;
             var apiKey = config.Get("apikey");
@@ -25,7 +25,12 @@ namespace PriceQuotationApp
             
         }
 
-        public static string NotificarPrecoSMTP(string mensagem)
+        public static void NotificarPreco(string ativo, string condicao, float precoDesejado)
+        {
+            string mensagem = string.Format("Preço do ativo: {0} no alvo ou {1} ao desejado: {2}", ativo, condicao, precoDesejado);
+            EnviarEmailSMTP(mensagem);
+        }
+        private static string EnviarEmailSMTP(string mensagem)
         {
             var config = System.Configuration.ConfigurationManager.AppSettings;
             var apiKey = config.Get("apikey");

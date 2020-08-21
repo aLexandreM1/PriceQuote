@@ -14,9 +14,8 @@ namespace PriceQuotationApp
                 Simbolo = MetaData.Symbol,
                 TimeZone = MetaData.TimeZone,
                 TipoOutput = MetaData.OutputSize,
-                UltimaAtualizacao = MetaData.LastRefreshed
+                UltimaAtualizacao = Convert.ToDateTime(MetaData.LastRefreshed)
             };
-
             return ativo;
         }
 

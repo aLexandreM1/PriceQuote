@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace PriceQuotationApp
 {
@@ -6,7 +7,7 @@ namespace PriceQuotationApp
     {
         public string Informacao { get; set; }
         public string Simbolo { get; set; }
-        public string UltimaAtualizacao { get; set; }
+        public DateTime UltimaAtualizacao { get; set; }
         public string TipoOutput { get; set; }
         public string TimeZone { get; set; }
         public virtual List<Cotacao> Cotacoes { get; set; }
