@@ -1,12 +1,23 @@
 ﻿using Avapi;
 using Avapi.AvapiTIME_SERIES_DAILY;
+using PriceQuotationApp.Domain;
 using System;
 
-namespace PriceQuotationApp
+namespace PriceQuotationApp.Services
 {
-    class AvapiQuotacaoServico
+    public class AvapiCotacaoServico : IAvapiCotacaoServico
     {
-        public static Ativo CotacaoPrecoAtivo(string ativoString)
+
+
+        IAvapiCotacaoServico avapiCotacaoServico;
+        public AvapiCotacaoServico(){}
+
+        public AvapiCotacaoServico(IAvapiCotacaoServico paramAvapiCotacaoServico)
+        {
+            avapiCotacaoServico = paramAvapiCotacaoServico;
+        }
+
+        public Ativo CotacaoPrecoAtivo(string ativoString)
         {
             var config = System.Configuration.ConfigurationManager.AppSettings;
             string apiKey = config.Get("apikeyAV");
@@ -20,12 +31,14 @@ namespace PriceQuotationApp
             Int_TIME_SERIES_DAILY time_series_daily =
                 connection.GetQueryObject_TIME_SERIES_DAILY();
 
+            ativoString += ".SA";
             // Perform the TIME_SERIES_DAILY request and get the result
             IAvapiResponse_TIME_SERIES_DAILY time_series_dailyResponse =
             time_series_daily.Query(
                  ativoString, //Work SA prices
                  Const_TIME_SERIES_DAILY.TIME_SERIES_DAILY_outputsize.compact);
-            Console.WriteLine(time_series_dailyResponse);
+
+
 
             var ativo = MapeamentoServico.MapearParaAtivo(time_series_dailyResponse.Data.MetaData);
             var cotacoes = MapeamentoServico.MapearParaCotacoes(time_series_dailyResponse.Data.TimeSeries);

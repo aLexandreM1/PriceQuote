@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace PriceQuotationApp
+namespace PriceQuotationApp.Domain
 {
-    class Ativo
+    public class Ativo
     {
         public string Informacao { get; set; }
         public string Simbolo { get; set; }

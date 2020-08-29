@@ -1,8 +1,9 @@
 ﻿using Avapi.AvapiTIME_SERIES_DAILY;
+using PriceQuotationApp.Domain;
 using System;
 using System.Collections.Generic;
 
-namespace PriceQuotationApp
+namespace PriceQuotationApp.Services
 {
     class MapeamentoServico
     {

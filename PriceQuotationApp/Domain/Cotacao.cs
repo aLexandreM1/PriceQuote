@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace PriceQuotationApp
+namespace PriceQuotationApp.Domain
 {
-    class Cotacao
+    public class Cotacao
     {
         public DateTime DateTime { get; set; }
         public float Abertura { get; set; }
