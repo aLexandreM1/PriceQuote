@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30128.74
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PriceQuotationApp", "PriceQuotationApp\PriceQuotationApp.csproj", "{8638B734-59BD-47F7-B2CF-BB697CB7EA07}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PriceQuoteTests", "PriceQuoteTests\PriceQuoteTests.csproj", "{60CF5599-2058-4B37-BAB1-55E5014B01B2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PriceQuoteTest", "PriceQuoteTests\PriceQuoteTest.csproj", "{60CF5599-2058-4B37-BAB1-55E5014B01B2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

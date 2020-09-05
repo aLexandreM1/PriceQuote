@@ -4,6 +4,6 @@ namespace PriceQuotationApp.Services
 {
     public interface IAvapiCotacaoServico
     {
-        public Ativo CotacaoPrecoAtivo(string ativoString);
+        public Ativo CotarPrecoAtivo(string ativoString);
     }
 }

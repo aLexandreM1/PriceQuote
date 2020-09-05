@@ -16,10 +16,10 @@ namespace PriceQuoteTests.Integration
         public void IniciarServicoDeVigiaDePrecoTest()
         {
             var mock = new Mock<IAvapiCotacaoServico>();
-            mock.Setup(mock => mock.CotacaoPrecoAtivo("PETR4"));
-            mock.Object.CotacaoPrecoAtivo("PETR4");
+            mock.Setup(mock => mock.CotarPrecoAtivo("PETR4"));
+            mock.Object.CotarPrecoAtivo("PETR4");
 
-            mock.Verify(mock => mock.CotacaoPrecoAtivo("PETR4"));
+            mock.Verify(mock => mock.CotarPrecoAtivo("PETR4"));
 
         }
 
@@ -27,7 +27,7 @@ namespace PriceQuoteTests.Integration
         public void IniciarServicoDeVigiaDePrecoTest_AtivoComCotacaoAcimaDoDesejado_DeveRetornarTrue()
         {
             var mockCotacaoServico = new Mock<IAvapiCotacaoServico>();
-            mockCotacaoServico.Setup(mock => mock.CotacaoPrecoAtivo("PETR4")).Returns(new Ativo()
+            mockCotacaoServico.Setup(mock => mock.CotarPrecoAtivo("PETR4")).Returns(new Ativo()
             {
                 Simbolo = "PETR4",
                 Cotacoes = new List<Cotacao>() { new Cotacao() 
@@ -54,7 +54,7 @@ namespace PriceQuoteTests.Integration
 
             var result = cotacaoServico.IniciarServicoDeVigiaDePreco("PETR4", "25.30","22.00");
 
-            mockCotacaoServico.Verify(x => x.CotacaoPrecoAtivo("PETR4"), Times.Once());
+            mockCotacaoServico.Verify(x => x.CotarPrecoAtivo("PETR4"), Times.Once());
             mockNotificacaoServico.Verify(x => x.NotificarPreco("PETR4", "superior", 25.30f), Times.Once());
 
             Assert.IsTrue(result, "result deve ser true");
@@ -64,7 +64,7 @@ namespace PriceQuoteTests.Integration
         public void IniciarServicoDeVigiaDePrecoTest_AtivoComCotacaoAbaixoDoDesejado_DeveRetornarTrue()
         {
             var mockCotacaoServico = new Mock<IAvapiCotacaoServico>();
-            mockCotacaoServico.Setup(mock => mock.CotacaoPrecoAtivo("PETR4")).Returns(new Ativo()
+            mockCotacaoServico.Setup(mock => mock.CotarPrecoAtivo("PETR4")).Returns(new Ativo()
             {
                 Simbolo = "PETR4",
                 Cotacoes = new List<Cotacao>() { new Cotacao()
@@ -91,7 +91,7 @@ namespace PriceQuoteTests.Integration
 
             var result = cotacaoServico.IniciarServicoDeVigiaDePreco("PETR4", "26.30", "22.00");
 
-            mockCotacaoServico.Verify(x => x.CotacaoPrecoAtivo("PETR4"), Times.Once());
+            mockCotacaoServico.Verify(x => x.CotarPrecoAtivo("PETR4"), Times.Once());
             mockNotificacaoServico.Verify(x => x.NotificarPreco("PETR4", "inferior", 22.00f), Times.Once());
 
             Assert.IsTrue(result, "result deve ser true");
@@ -101,7 +101,7 @@ namespace PriceQuoteTests.Integration
         public void IniciarServicoDeVigiaDePrecoTest_AtivoComCotacaoEntreOsValoresDesejados_DeveRetornarFalse()
         {
             var mockCotacaoServico = new Mock<IAvapiCotacaoServico>();
-            mockCotacaoServico.Setup(mock => mock.CotacaoPrecoAtivo("PETR4")).Returns(new Ativo()
+            mockCotacaoServico.Setup(mock => mock.CotarPrecoAtivo("PETR4")).Returns(new Ativo()
             {
                 Simbolo = "PETR4",
                 Cotacoes = new List<Cotacao>() { new Cotacao()
@@ -129,7 +129,7 @@ namespace PriceQuoteTests.Integration
 
             var result = cotacaoServico.IniciarServicoDeVigiaDePreco("PETR4", "26.30", "22.00");
 
-            mockCotacaoServico.Verify(x => x.CotacaoPrecoAtivo("PETR4"), Times.Once());
+            mockCotacaoServico.Verify(x => x.CotarPrecoAtivo("PETR4"), Times.Once());
             mockNotificacaoServico.Verify(x => x.NotificarPreco("PETR4", "inferior", 22.00f), Times.Never());
             
 

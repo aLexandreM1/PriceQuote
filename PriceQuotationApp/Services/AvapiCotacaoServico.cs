@@ -17,7 +17,7 @@ namespace PriceQuotationApp.Services
             avapiCotacaoServico = paramAvapiCotacaoServico;
         }
 
-        public Ativo CotacaoPrecoAtivo(string ativoString)
+        public Ativo CotarPrecoAtivo(string ativoString)
         {
             var config = System.Configuration.ConfigurationManager.AppSettings;
             string apiKey = config.Get("apikeyAV");

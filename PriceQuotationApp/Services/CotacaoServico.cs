@@ -18,15 +18,11 @@ namespace PriceQuotationApp.Services
 
         public bool IniciarServicoDeVigiaDePreco(string simbolo, string precoMaximo, string precoMinimo)
         {
-            //string simbolo = "PETR4";
-            //simbolo += ".SA"; //Suffix needed for AlphaVantage
-            //string precoMaximo = "28.31";
-            //string precoMinimo = "22.24";
 
             float precoMaximoDesejado = float.Parse(precoMaximo);
             float precoMinimoDesejado = float.Parse(precoMinimo);
-            Ativo ativo = avapiService.CotacaoPrecoAtivo(simbolo);
-            Cotacao cotacaoDoDia = CotacaoServico.EncontrarCotacaoMaisRecente(ativo);
+            Ativo ativo = avapiService.CotarPrecoAtivo(simbolo);
+            Cotacao cotacaoDoDia = EncontrarCotacaoMaisRecente(ativo);
 
             if (cotacaoDoDia.Maxima >= precoMaximoDesejado || cotacaoDoDia.Minima <= precoMinimoDesejado)
             {
